@@ -2,13 +2,94 @@
 <html>
 
 <head>
+	<script src="dmxAppConnect/dmxAppConnect.js"></script>
 	<meta charset="UTF-8">
 	<title>Untitled Document</title>
 
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<link rel="stylesheet" href="Framework7/4/css/framework7.bundle.min.css" />
+	<link rel="stylesheet" href="dmxFramework7_icons/css/framework7-icons.css" />
 </head>
 
-<body>
+<body is="dmx-app" id="index">
+	<dmx-api-action id="getneededitems" url="https://us-central1-tag-grocery.cloudfunctions.net/app/api/Users/JWqPzW4CHlTjGA1NqtuG/Items/read/"></dmx-api-action>
+	<div id="app">
+		<div class="statusbar"></div>
 
+		<div class="panel-overlay"></div>
+
+		<div class="view view-main">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="left"></div>
+					<div class="title sliding">Awesome App</div>
+					<div class="right"></div>
+				</div>
+			</div>
+
+			<div class="page" data-name="index">
+				<div class="page-content">
+					<div class="row">
+						<div class="col-auto">
+							<p>Col 1</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-auto">
+							<div class="block-title">NEEDED</div>
+							<div class="list">
+								<ul>
+									<li>
+										<a href="#" class="item-link item-content">
+											<div class="item-media"><i class="icon icon-f7">{{getneededitems.data[0].quantity}}</i></div>
+											<div class="item-inner">
+												<div class="item-title">{{getneededitems.data[0].name}}</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-auto">
+							<div class="block-title">CROSSED OFF</div>
+							<div class="list links-list">
+								<ul is="dmx-repeat" id="repeat1" dmx-bind:repeat="getneededitems.data">
+									<li>
+										<a href="" class="item-link">
+											<div class="item-content">
+												<div class="item-inner">
+													<div class="item-title">{{name}}</div>
+												</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="toolbar">
+				<div class="toolbar-inner">
+					<a href="#" class="link">Hello</a>
+					<a href="#" class="link">World</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="Framework7/4/js/framework7.bundle.min.js"></script>
+	<script src="js/routes.js"></script>
+	<script src="js/app.js"></script>
 </body>
 
 </html>
