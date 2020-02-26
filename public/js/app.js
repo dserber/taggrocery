@@ -35,6 +35,8 @@ var app = new Framework7({
   }
 });
 
+
 if (document.querySelector('.view-main')) {
   var mainView = app.views.create('.view-main');
 }
+
