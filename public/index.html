@@ -19,6 +19,7 @@
 
 <body is="dmx-app" id="index">
 	<dmx-api-action id="getneededitems" url="https://us-central1-tag-grocery.cloudfunctions.net/app/api/Users/JWqPzW4CHlTjGA1NqtuG/Items/read/"></dmx-api-action>
+	<dmx-api-action id="gettags"></dmx-api-action>
 	<div id="app">
 		<div class="statusbar"></div>
 
@@ -55,70 +56,49 @@
 				<div class="page-content">
 					<div class="row">
 						<div class="col-auto">
-							<p>Col</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-auto">
-							<div class="block-title">NEEDED</div>
-							<div class="list">
-								<ul>
-									<li>
-										<a href="#" class="item-link item-content">
-											<div class="item-media"><i class="icon icon-f7">{{getneededitems.data[0].quantity}}</i></div>
-											<div class="item-inner">
-												<div class="item-title">{{getneededitems.data[0].name}}</div>
-											</div>
-										</a>
-									</li>
-								</ul>
+							<div class="block-title">TAGS</div>
+							<div class="block block-strong" is="dmx-repeat" id="repeat1" dmx-bind:repeat="getneededitems.data">
+								<div class="chip">
+									<div class="chip-label">{{tags.name}}</div>
+									<a href="#" class="chip-delete"></a>
+								</div>
 							</div>
 
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-auto">
-							<div class="block-title">CROSSED OFF</div>
-							<div class="list links-list">
-								<ul is="dmx-repeat" id="repeat1" dmx-bind:repeat="getneededitems.data">
-									<li>
-										<a href="" class="item-link">
-											<div class="item-content">
-												<div class="item-inner">
-													<div class="item-title">{{name}}</div>
-												</div>
-											</div>
-										</a>
-									</li>
-								</ul>
-							</div>
+					<div class="row text-align-left" dmx-repeat:repeat2="getneededitems.data">
+						<div class="col-auto col-80">
+							<p>{{name}}</p>
+						</div>
+						<div class="col-auto col-20">
+							<i class="f7-icons">Edit</i>
 						</div>
 					</div>
+
 				</div>
-			</div>
 
-			<div class="toolbar">
-				<div class="toolbar-inner">
-					<a href="#" class="link">Hello</a>
-					<a href="#" class="link">World</a>
+				<div class="toolbar">
+					<div class="toolbar-inner">
+						<a href="#" class="link">Hello</a>
+						<a href="#" class="link">World</a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
 
-	<script src="Framework7/4/js/framework7.bundle.min.js"></script>
-	<script src="js/routes.js"></script>
-	<script src="js/app.js"></script>
-	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
-	<!-- Add Firebase products that you want to use -->
-	<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-auth.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
-	<!-- Previously loaded Firebase SDKs -->
+		<script src="Framework7/4/js/framework7.bundle.min.js"></script>
+		<script src="js/routes.js"></script>
+		<script src="js/app.js"></script>
+		<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+		<!-- Add Firebase products that you want to use -->
+		<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
+		<!-- Previously loaded Firebase SDKs -->
 
-	<script>
-		// TODO: Replace the following with your app's Firebase project configuration
+		<script>
+			// TODO: Replace the following with your app's Firebase project configuration
     var firebaseConfig = {
     apiKey: "AIzaSyAHrsF7G5aoSI3jugvmyjf7I33IqiobLoY",
     authDomain: "tag-grocery.firebaseapp.com",
@@ -131,8 +111,12 @@
 };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-	</script>
-	<script src="cordova.js"></script>
+		</script>
+		<script src="cordova.js"></script>
+		<script src="cordova.js"></script>
+		<script src="Framework7/4/js/framework7.bundle.min.js"></script>
+		<script src="js/routes.js"></script>
+		<script src="js/app.js"></script>
 </body>
 
 </html>

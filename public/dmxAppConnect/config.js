@@ -177,6 +177,45 @@ dmx.config({
         }
       ],
       "outputType": "array"
+    },
+    "repeat2": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "id"
+        },
+        {
+          "type": "text",
+          "name": "name"
+        },
+        {
+          "type": "text",
+          "name": "notes"
+        },
+        {
+          "type": "text",
+          "name": "price"
+        },
+        {
+          "type": "text",
+          "name": "quantity"
+        },
+        {
+          "type": "object",
+          "name": "tags",
+          "sub": [
+            {
+              "type": "text",
+              "name": "id"
+            },
+            {
+              "type": "text",
+              "name": "name"
+            }
+          ]
+        }
+      ],
+      "outputType": "array"
     }
   }
 });
