@@ -19,12 +19,28 @@
 </head>
 
 <body is="dmx-app" id="index">
-	<dmx-api-action id="api1" noload="true" method="put" url="https://us-central1-tag-grocery.cloudfunctions.net/app/api/Users/JWqPzW4CHlTjGA1NqtuG/Items/{id}/update/done" dmx-data:done="true" data-type="json" dmx-param:id="repeat2[0].id">
-	</dmx-api-action>
+
 	<dmx-api-action id="changetodone" method="put" data-type="json" dmx-data="" noload="noload"></dmx-api-action>
 	<dmx-api-action id="getneededitems" url="https://us-central1-tag-grocery.cloudfunctions.net/app/api/Users/JWqPzW4CHlTjGA1NqtuG/Items/read/"></dmx-api-action>
 	<dmx-api-action id="gettags"></dmx-api-action>
 	<div id="app">
+		<div id="popup1" class="popup">
+			<div class="view navbar-fixed">
+				<div class="pages navbar-through toolbar-through">
+					<div class="page">
+						<div class="navbar">
+							<div class="navbar-inner">
+								<div class="center">Popup Title</div>
+								<div class="right"><a href="#" class="link popup-close">Done</a></div>
+							</div>
+						</div>
+						<div class="page-content">
+							<div class="block"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="statusbar"></div>
 
 		<div class="panel-overlay"></div>
@@ -67,19 +83,25 @@
 									<a href="#" class="chip-delete"></a>
 								</div>
 							</div>
+							<div class="block">
+								<i class="f7-icons">house</i>
+							</div>
 
 						</div>
 					</div>
 					<div class="block-title">ITEMS NEEDED</div>
 					<div class="row text-align-left" dmx-repeat:repeat2="getneededitems.data.where(`done`, false, &quot;==&quot;)">
+						<dmx-api-action id="api1" noload="true" method="put" dmx-data:done="true" data-type="json" dmx-bind:url="https://us-central1-tag-grocery.cloudfunctions.net/app/api/Users/JWqPzW4CHlTjGA1NqtuG/Items/{{id}}/update/done">
+						</dmx-api-action>
 						<div class="col-auto col-80">
+							<button id="btn1" dmx-on:click="api1.load()">Button</button>
 							<p>{{name}} {{done}} {{id}}</p>
 
 							<a href="#" class="button" dmx-on:click="api1.load({})">Button</a>
 
 						</div>
 						<div class="col-auto col-20">
-							<i class="f7-icons">Edit</i>
+							<i class="f7-icons">house</i>
 						</div>
 					</div>
 					<div class="block-title">CROSSED OFF</div>
@@ -90,10 +112,15 @@
 						<div class="col-auto col-20">
 							<div class="item-content item-input">
 								<div class="item-media">
-									<i class="icon f7-icons">house</i>
+									<i class="icon f7-icons color-red">house</i>
 								</div>
 							</div>
 
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-auto bg-color-black">
+							<i class="icon f7-icons color-red">house</i>
 						</div>
 					</div>
 				</div>
