@@ -15,9 +15,13 @@
 	<link rel="stylesheet" href="Framework7/4/css/framework7.bundle.min.css" />
 	<link rel="stylesheet" href="dmxFramework7_icons/css/framework7-icons.css" />
 
+	<script src="dmxAppConnect/dmxFormatter/dmxFormatter.js" defer=""></script>
 </head>
 
 <body is="dmx-app" id="index">
+	<dmx-api-action id="api1" noload="true" method="put" url="https://us-central1-tag-grocery.cloudfunctions.net/app/api/Users/JWqPzW4CHlTjGA1NqtuG/Items/{id}/update/done" dmx-data:done="true" data-type="json" dmx-param:id="repeat2[0].id">
+	</dmx-api-action>
+	<dmx-api-action id="changetodone" method="put" data-type="json" dmx-data="" noload="noload"></dmx-api-action>
 	<dmx-api-action id="getneededitems" url="https://us-central1-tag-grocery.cloudfunctions.net/app/api/Users/JWqPzW4CHlTjGA1NqtuG/Items/read/"></dmx-api-action>
 	<dmx-api-action id="gettags"></dmx-api-action>
 	<div id="app">
@@ -29,7 +33,7 @@
 			<div class="navbar">
 				<div class="navbar-inner">
 					<div class="left"></div>
-					<div class="title sliding">Awesome App</div>
+					<div class="title sliding">Tag Groceries</div>
 					<div class="right"></div>
 				</div>
 			</div>
@@ -66,39 +70,58 @@
 
 						</div>
 					</div>
-					<div class="row text-align-left" dmx-repeat:repeat2="getneededitems.data">
+					<div class="block-title">ITEMS NEEDED</div>
+					<div class="row text-align-left" dmx-repeat:repeat2="getneededitems.data.where(`done`, false, &quot;==&quot;)">
 						<div class="col-auto col-80">
-							<p>{{name}}</p>
+							<p>{{name}} {{done}} {{id}}</p>
+
+							<a href="#" class="button" dmx-on:click="api1.load({})">Button</a>
+
 						</div>
 						<div class="col-auto col-20">
 							<i class="f7-icons">Edit</i>
 						</div>
 					</div>
+					<div class="block-title">CROSSED OFF</div>
+					<div class="row" dmx-repeat:repeat3="getneededitems.data.where(`done`, true, &quot;==&quot;)">
+						<div class="col-auto col-80">
+							<p>{{name}} {{done}}</p>
+						</div>
+						<div class="col-auto col-20">
+							<div class="item-content item-input">
+								<div class="item-media">
+									<i class="icon f7-icons">house</i>
+								</div>
+							</div>
 
+						</div>
+					</div>
 				</div>
 
-				<div class="toolbar">
-					<div class="toolbar-inner">
-						<a href="#" class="link">Hello</a>
-						<a href="#" class="link">World</a>
-					</div>
+			</div>
+
+			<div class="toolbar">
+				<div class="toolbar-inner">
+					<a href="#" class="link">Hello</a>
+					<a href="#" class="link">World</a>
 				</div>
 			</div>
 		</div>
+	</div>
 
 
-		<script src="Framework7/4/js/framework7.bundle.min.js"></script>
-		<script src="js/routes.js"></script>
-		<script src="js/app.js"></script>
-		<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-		<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
-		<!-- Add Firebase products that you want to use -->
-		<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-auth.js"></script>
-		<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
-		<!-- Previously loaded Firebase SDKs -->
+	<script src="Framework7/4/js/framework7.bundle.min.js"></script>
+	<script src="js/routes.js"></script>
+	<script src="js/app.js"></script>
+	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
+	<!-- Previously loaded Firebase SDKs -->
 
-		<script>
-			// TODO: Replace the following with your app's Firebase project configuration
+	<script>
+		// TODO: Replace the following with your app's Firebase project configuration
     var firebaseConfig = {
     apiKey: "AIzaSyAHrsF7G5aoSI3jugvmyjf7I33IqiobLoY",
     authDomain: "tag-grocery.firebaseapp.com",
@@ -111,12 +134,8 @@
 };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-		</script>
-		<script src="cordova.js"></script>
-		<script src="cordova.js"></script>
-		<script src="Framework7/4/js/framework7.bundle.min.js"></script>
-		<script src="js/routes.js"></script>
-		<script src="js/app.js"></script>
+	</script>
+	<script src="cordova.js"></script>
 </body>
 
 </html>

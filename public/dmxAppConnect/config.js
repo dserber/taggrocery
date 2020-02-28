@@ -31,13 +31,17 @@ dmx.config({
             "sub": [
               {
                 "type": "text",
-                "name": "id"
+                "name": "name"
               },
               {
                 "type": "text",
-                "name": "name"
+                "name": "id"
               }
             ]
+          },
+          {
+            "type": "boolean",
+            "name": "done"
           }
         ]
       },
@@ -206,16 +210,69 @@ dmx.config({
           "sub": [
             {
               "type": "text",
-              "name": "id"
+              "name": "name"
             },
             {
               "type": "text",
-              "name": "name"
+              "name": "id"
             }
           ]
+        },
+        {
+          "type": "boolean",
+          "name": "done"
         }
       ],
       "outputType": "array"
-    }
+    },
+    "repeat3": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "id"
+        },
+        {
+          "type": "text",
+          "name": "name"
+        },
+        {
+          "type": "text",
+          "name": "notes"
+        },
+        {
+          "type": "text",
+          "name": "price"
+        },
+        {
+          "type": "text",
+          "name": "quantity"
+        },
+        {
+          "type": "object",
+          "name": "tags",
+          "sub": [
+            {
+              "type": "text",
+              "name": "name"
+            },
+            {
+              "type": "text",
+              "name": "id"
+            }
+          ]
+        },
+        {
+          "type": "boolean",
+          "name": "done"
+        }
+      ],
+      "outputType": "array"
+    },
+    "api1": [
+      {
+        "type": "text",
+        "name": "new"
+      }
+    ]
   }
 });

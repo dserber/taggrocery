@@ -24,8 +24,6 @@
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-feature-settings: "liga";
-  -moz-font-feature-settings: "liga=1";
-  -moz-font-feature-settings: "liga";
-  font-feature-settings: "liga";
+          font-feature-settings: "liga";
   text-align: center;
 }
