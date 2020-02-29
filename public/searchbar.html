@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Untitled Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<link rel="stylesheet" href="Framework7/4/css/framework7.bundle.min.css" />
+</head>
+
+<body>
+	<div id="app">
+		<div class="view view-main">
+			<div class="page">
+				<div class="navbar">
+					<div class="navbar-bg"></div>
+					<div class="navbar-inner">
+						<div class="title">Search Bar</div>
+						<div class="subnavbar">
+							<!-- Searchbar with auto init -->
+							<form class="searchbar">
+								<div class="searchbar-inner">
+									<div class="searchbar-input-wrap">
+										<input type="search" placeholder="Search">
+										<i class="searchbar-icon"></i>
+										<span class="input-clear-button"></span>
+									</div>
+									<span class="searchbar-disable-button if-not-aurora">Cancel</span>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="page-content">
+					<!-- Searchbar backdrop -->
+					<div class="searchbar-backdrop"></div>
+					<!-- hide-on-search element -->
+					<div class="block searchbar-hide-on-search">
+						<p>This block will be hidden on search. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					</div>
+					<!-- search target list -->
+					<div class="list searchbar-found">
+						<ul>
+							<li class="item-content">
+								<div class="item-inner">
+									<div class="item-title">Acura</div>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-inner">
+									<div class="item-title">Audi</div>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-inner">
+									<div class="item-title">BMW</div>
+								</div>
+							</li>
+							...
+							<li class="item-content">
+								<div class="item-inner">
+									<div class="item-title">Volvo</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="row">
+						<div class="col-auto">
+							<a href="#" class="button color-blue">ADD</a>
+						</div>
+					</div>
+					<!-- Nothing found message -->
+					<div class="block searchbar-not-found">
+						<div class="block-inner">Nothing found</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="Framework7/4/js/framework7.bundle.min.js"></script>
+	<script src="js/routes.js"></script>
+	<script src="js/app.js"></script>
+</body>
+
+</html>

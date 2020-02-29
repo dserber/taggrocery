@@ -2,6 +2,7 @@
 <html>
 
 <head>
+	<script src="dmxAppConnect/dmxAppConnect.js"></script>
 	<meta charset="UTF-8">
 	<title>Untitled Document</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
@@ -14,7 +15,7 @@
 	<link rel="stylesheet" href="dmxFramework7_icons/css/framework7-icons.css" />
 </head>
 
-<body>
+<body is="dmx-app" id="popup">
 	<div id="app">
 		<div id="popup1" class="popup">
 			<div class="view navbar-fixed">
@@ -22,24 +23,46 @@
 					<div class="page">
 						<div class="navbar">
 							<div class="navbar-inner">
-								<div class="left"><a href="#" class="link popup-close">Done</a></div>
-								<div class="title">Add Items</div>
+								<div class="left"><a href="#" class="link popup-close"><i class="icon f7-icons">close</i>
+									</a></div>
 
-								<div class="center">Popup Title</div>
+								<div class="center">Add Needed Items</div>
 
 							</div>
 						</div>
 						<div class="page-content">
+							<!-- Searchbar backdrop layer -->
+							<div class="searchbar-backdrop"></div>
+							<form class="searchbar">...</form>
+
+							<!-- Following block title and block will be hidden on search -->
+							<div class="block-title searchbar-hide-on-search">Some block title</div>
+							<div class="block">Lorem ipsum dolor sit amet...</div>
+
+							<!-- We do search in super heroes list so the following title and list must be visible on search -->
+							<div class="block-title searchbar-found">Super Heroes</div>
+							<div class="list simple-list searchbar-found">
+								<ul>
+									<li>Hulk</li>
+									<li>Batman</li>
+									<li>Superman</li>
+									...
+								</ul>
+							</div>
+
+							<!-- This list will be visible when there is not any search results -->
+							<div class="list simple-list searchbar-not-found">
+								<ul>
+									<li>Nothing found</li>
+								</ul>
+							</div>
 							<div class="row">
-								<div class="col-auto">
-									<form>
+								<div class="col-auto col-80">
+									<form method="post" is="dmx-api-form" id="apiform1" dmx-param:name="name.value">
 										<div class="list">
 											<ul>
 												<li>
 													<div class="item-content item-input">
-														<div class="item-media">
-															<i class="icon f7-icons">alarm_fill</i>
-														</div>
 														<div class="item-inner">
 															<div class="item-title item-label">Name</div>
 															<div class="item-input-wrap">
@@ -51,6 +74,14 @@
 											</ul>
 										</div>
 									</form>
+								</div>
+								<div class="col-20">
+									<a href="#" class="button">Button</a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-auto">
+									<p>Col 1</p>
 								</div>
 							</div>
 						</div>
