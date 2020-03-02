@@ -26,17 +26,21 @@
 	<div id="app">
 		<div id="popup1" class="popup">
 			<div class="view navbar-fixed">
-				<div class="pages navbar-through toolbar-through">
-					<div class="page">
-						<div class="navbar">
-							<div class="navbar-inner">
-								<div class="center">Popup Title</div>
-								<div class="right"><a href="#" class="link popup-close">Done</a></div>
+				<div class="navbar-bg"></div>
+				<div class="navbar-inner">
+					<div class="title">Search Bar</div>
+					<div class="subnavbar">
+						<!-- Searchbar with auto init -->
+						<form class="searchbar">
+							<div class="searchbar-inner">
+								<div class="searchbar-input-wrap">
+									<input type="search" placeholder="Search">
+									<i class="searchbar-icon"></i>
+									<span class="input-clear-button"></span>
+								</div>
+								<span class="searchbar-disable-button if-not-aurora">Cancel</span>
 							</div>
-						</div>
-						<div class="page-content">
-							<div class="block"></div>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -56,85 +60,86 @@
 
 			<div class="page" data-name="index">
 				<!-- FAB Backdrop -->
-				<div class="fab-backdrop"></div>
-
-				<!-- FAB Right Bottom -->
-				<div class="fab fab-right-bottom">
-					...
-					<div class="fab-buttons fab-buttons-top">
-						<a href="#" class="fab-label-button">
-							<span>1</span>
-							<span class="fab-label">Action 1</span>
-						</a>
-						<a href="#" class="fab-label-button">
-							<span>2</span>
-							<span class="fab-label">Action 2</span>
-						</a>
+				<div class="fab fab-right-bottom color-red" data-popup="#popup1">
+					<a href="#">
+						<!-- Icons For iOS Theme -->
+						<i class="icon f7-icons if-not-md">airplane</i>
+						<i class="icon f7-icons if-not-md">airplane</i>
+						<!-- Icons For MD Theme -->
+						<i class="icon material-icons md-only">airplane</i>
+						<i class="icon material-icons md-only">airplane</i>
+					</a>
+					<!-- FAB speed dial actions -->
+					<div class="fab-buttons fab-buttons-bottom">
+						<a href="">1</a>
+						<a href="">2</a>
+						<a href="">3</a>
 					</div>
 				</div>
+			</div>
 
-				<div class="page-content">
-					<div class="row">
-						<div class="col-auto">
-							<a href="#" class="button popover-open">Button</a>
-							<div class="block-title">TAGS</div>
-							<div class="block block-strong" is="dmx-repeat" id="repeat1" dmx-bind:repeat="getneededitems.data">
-								<div class="chip">
-									<div class="chip-label">{{tags.name}}</div>
-									<a href="#" class="chip-delete"></a>
-								</div>
+			<div class="page-content">
+				<div class="row">
+					<div class="col-auto">
+						<a href="#" class="button popup-open" data-popup="#popup1">Button</a>
+						<div class="block-title">TAGS</div>
+						<div class="block block-strong" is="dmx-repeat" id="repeat1" dmx-bind:repeat="getneededitems.data">
+							<div class="chip">
+								<div class="chip-label">{{tags.name}}</div>
+								<a href="#" class="chip-delete"></a>
 							</div>
-							<div class="block">
-								<i class="f7-icons">house</i>
-							</div>
-
 						</div>
-					</div>
-					<div class="block-title">ITEMS NEEDED</div>
-					<div class="row text-align-left" dmx-repeat:repeat2="getneededitems.data.where(`done`, false, &quot;==&quot;)">
-						<dmx-api-action id="api1" noload="true" method="put" dmx-data:done="true" data-type="json" dmx-bind:url="https://us-central1-tag-grocery.cloudfunctions.net/app/api/Users/JWqPzW4CHlTjGA1NqtuG/Items/{{id}}/update/done">
-						</dmx-api-action>
-						<div class="col-auto col-80">
-							<button id="btn1" dmx-on:click="api1.load()">Button</button>
-							<p>{{name}} {{done}} {{id}}</p>
-
-							<a href="#" class="button" dmx-on:click="api1.load({})">Button</a>
-
-						</div>
-						<div class="col-auto col-20">
+						<div class="block">
 							<i class="f7-icons">house</i>
 						</div>
-					</div>
-					<div class="block-title">CROSSED OFF</div>
-					<div class="row" dmx-repeat:repeat3="getneededitems.data.where(`done`, true, &quot;==&quot;)">
-						<div class="col-auto col-80">
-							<p>{{name}} {{done}}</p>
-						</div>
-						<div class="col-auto col-20">
-							<div class="item-content item-input">
-								<div class="item-media">
-									<i class="icon f7-icons color-red">house</i>
-								</div>
-							</div>
 
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-auto bg-color-black">
-							<i class="icon f7-icons color-red">house</i>
-						</div>
 					</div>
 				</div>
+				<div class="block-title">ITEMS NEEDED</div>
+				<div class="row text-align-left" dmx-repeat:repeat2="getneededitems.data.where(`done`, false, &quot;==&quot;)">
+					<dmx-api-action id="api1" noload="true" method="put" dmx-data:done="true" data-type="json" dmx-bind:url="https://us-central1-tag-grocery.cloudfunctions.net/app/api/Users/JWqPzW4CHlTjGA1NqtuG/Items/{{id}}/update/done">
+					</dmx-api-action>
+					<div class="col-auto col-80">
+						<button id="btn1" dmx-on:click="api1.load()">Button</button>
+						<p>{{name}} {{done}} {{id}}</p>
 
+						<a href="#" class="button" dmx-on:click="api1.load({})">Button</a>
+
+					</div>
+					<div class="col-auto col-20">
+						<i class="f7-icons">house</i>
+					</div>
+				</div>
+				<div class="block-title">CROSSED OFF</div>
+				<div class="row" dmx-repeat:repeat3="getneededitems.data.where(`done`, true, &quot;==&quot;)">
+					<div class="col-auto col-80">
+						<p>{{name}} {{done}}</p>
+					</div>
+					<div class="col-auto col-20">
+						<div class="item-content item-input">
+							<div class="item-media">
+								<i class="icon f7-icons color-red">house</i>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-auto bg-color-black">
+						<i class="icon f7-icons color-red">house</i>
+					</div>
+				</div>
 			</div>
 
-			<div class="toolbar">
-				<div class="toolbar-inner">
-					<a href="#" class="link">Hello</a>
-					<a href="#" class="link">World</a>
-				</div>
+		</div>
+
+		<div class="toolbar">
+			<div class="toolbar-inner">
+				<a href="#" class="link">Hello</a>
+				<a href="#" class="link">World</a>
 			</div>
 		</div>
+	</div>
 	</div>
 
 
