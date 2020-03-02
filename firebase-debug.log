@@ -27,3 +27,32 @@
 [debug] [2020-02-27T18:51:47.002Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2020-03-02T18:02:45.794Z] ----------------------------------------------------------------------
+[debug] [2020-03-02T18:02:45.800Z] Command:       /usr/local/bin/firebase /home/dserber/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase serve
+[debug] [2020-03-02T18:02:45.800Z] CLI Version:   7.13.1
+[debug] [2020-03-02T18:02:45.800Z] Platform:      linux
+[debug] [2020-03-02T18:02:45.800Z] Node Version:  v12.13.1
+[debug] [2020-03-02T18:02:45.800Z] Time:          Mon Mar 02 2020 12:02:45 GMT-0600 (Central Standard Time)
+[debug] [2020-03-02T18:02:45.800Z] ----------------------------------------------------------------------
+[debug] [2020-03-02T18:02:45.801Z] 
+[debug] [2020-03-02T18:02:45.812Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-02T18:02:45.812Z] > authorizing via signed-in user
+[debug] [2020-03-02T18:02:45.813Z] [iam] checking project tag-grocery for permissions ["firebase.projects.get"]
+[debug] [2020-03-02T18:02:45.815Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-03-02T18:02:45.815Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-03-02T18:02:46.043Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-02T18:02:46.109Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/tag-grocery:testIamPermissions  
+
+[debug] [2020-03-02T18:02:46.333Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-02T18:02:46.346Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/tag-grocery  
+ 
+[debug] [2020-03-02T18:02:46.567Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/dserber/Tag Grocery'...
+[info] 
+[debug] [2020-03-02T18:02:46.604Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/tag-grocery/webApps/-/config  
+ 
+[debug] [2020-03-02T18:02:47.025Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000

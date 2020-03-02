@@ -58,7 +58,9 @@
 							</div>
 							<div class="row">
 								<div class="col-auto col-80">
-									<form method="post" is="dmx-api-form" id="apiform1" dmx-param:name="name.value">
+
+									<a href="#" class="button button-active" dmx-on:click="apiform1.submit({})">Button</a>
+									<form method="post" is="dmx-api-form" id="apiform1" dmx-param:name="name.value" action="https://us-central1-tag-grocery.cloudfunctions.net/app/api/Users/JWqPzW4CHlTjGA1NqtuG/Items/create" post-data="json">
 										<div class="list">
 											<ul>
 												<li>
@@ -74,9 +76,10 @@
 											</ul>
 										</div>
 									</form>
+
 								</div>
 								<div class="col-20">
-									<a href="#" class="button">Button</a>
+									<a href="#" class="button" dmx-on:click="apiform1.submit({})">Button</a>
 								</div>
 							</div>
 							<div class="row">

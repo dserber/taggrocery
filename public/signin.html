@@ -45,9 +45,14 @@
 	<meta name="format-detection" content="telephone=no">
 	<meta name="msapplication-tap-highlight" content="no">
 	<link rel="stylesheet" href="Framework7/4/css/framework7.bundle.min.css" />
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
 
 <body is="dmx-app" id="signin">
+	<dmx-api-action id="api1" noload="true" method="post" url="https://us-central1-tag-grocery.cloudfunctions.net/app/api/Users/create" data-type="json" dmx-bind:data="{id:'652',email:'wappler@test.com',name:'wappler'}">
+	</dmx-api-action>
+	<button id="btn1" dmx-on:click="api1.load({})" type="submit">Button</button>
 	<div id="app"></div>
 	<!-- The surrounding HTML is left untouched by FirebaseUI.
          Your app may use that space for branding, controls and other customizations.-->
@@ -98,6 +103,19 @@ ui.start('#firebaseui-auth-container', {
             console.log("Begin User Signup");
             console.log("isnewuser= "+ isNewUser)
             if (isNewUser) {
+              dmx.parse("api1.load()");  
+  //             axios.post('https://us-central1-tag-grocery.cloudfunctions.net/app/api/Users/create', {
+  //   id: '9998',
+	// email: 'wappler1234@created.com',
+	// name: {
+	// 	'First Name': 'Wappler',
+	// 	'Last Name': 'last created in code'
+	// }
+  // })
+  // .then(response => {
+	// console.log(response.data);
+	// })
+	// .catch(error => console.error(error));
   //  api call https://us-central1-tag-grocery.cloudfunctions.net/app/api/Users/create
 //   {
 // 	"id": userid variable,
@@ -137,7 +155,7 @@ ui.start('#firebaseui-auth-container', {
         queryParameterForSignInSuccessUrl: 'signInSuccessUrl',
         // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
         signInFlow: 'popup',
-        signInSuccessUrl: 'index.html',
+        signInSuccessUrl: 'signin.html',
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
